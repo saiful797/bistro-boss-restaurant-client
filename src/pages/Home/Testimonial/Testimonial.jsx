@@ -12,7 +12,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 const Testimonial = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        axios.get('reviews.json')
+        axios.get('http://localhost:8000/reviews')
         .then(res => {
             setReviews(res.data);
         })

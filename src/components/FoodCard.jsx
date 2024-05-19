@@ -14,7 +14,7 @@ const FoodCard = ({item}) => {
                 <p>{recipe}</p>
 
                 <Link className="flex justify-center items-center">
-                    <button className="btn btn-outline mt-4 border-0 border-b-4 border-b-orange-600 text-orange-600 mb-5 text-xl">Add To Cart</button>
+                    <button className="btn btn-outline mt-4 border-0 border-b-4 border-b-orange-600 text-orange-600 bg-slate-300 mb-5 text-xl">Add To Cart</button>
                 </Link>
             </div>
         </div>
