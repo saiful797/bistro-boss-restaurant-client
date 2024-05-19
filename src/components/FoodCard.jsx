@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const FoodCard = ({item}) => {
     const {name, recipe, image, price} = item;
@@ -11,9 +12,10 @@ const FoodCard = ({item}) => {
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p>{recipe}</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Add to Card</button>
-                </div>
+
+                <Link className="flex justify-center items-center">
+                    <button className="btn btn-outline mt-4 border-0 border-b-4 border-b-orange-600 text-orange-600 mb-5 text-xl">Add To Cart</button>
+                </Link>
             </div>
         </div>
     );
