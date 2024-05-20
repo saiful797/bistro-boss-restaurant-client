@@ -26,8 +26,9 @@ const Navbar = () => {
                     {  navLinks }
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <div className="navbar-end gap-3">
+                <Link className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600" to='/login'>Login</Link>
+                {/* <a className="btn">Button</a> */}
             </div>
         </div>
     );
