@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
+    const {user, logOut} = useAuth();
+
     const navLinks = <>
       <li><Link to='/'>Home</Link></li>
       <li><Link to='/menu'>Our Menu</Link></li>
       <li><Link to='/order'>Order Food</Link></li>
+       <li><Link to='/secret'>Secret</Link></li>
+
     </>
+
+    const handleLogout = () => {
+        logOut();
+    }
     return (
         <div className="navbar fixed z-50 bg-opacity-30 bg-black text-white max-w-screen-xl">
             <div className="navbar-start">
@@ -27,9 +36,16 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3">
-                <Link className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600" to='/login'>Login</Link>
-                <Link className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600" to='/signUp'>Sign Up</Link>
-                
+                {
+                    user? <div>
+                        <Link onClick={handleLogout} className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600">Logout</Link>
+                    </div>
+                    :
+                    <div>
+                        <Link className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600" to='/login'>Login</Link>
+                        <Link className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600" to='/signUp'>Sign Up</Link>
+                    </div>
+                }  
             </div>
         </div>
     );
