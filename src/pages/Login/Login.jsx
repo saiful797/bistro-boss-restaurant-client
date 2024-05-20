@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import useAuth from '../../Hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const captchaRef = useRef(null);
@@ -65,6 +66,9 @@ const Login = () => {
                            <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
+                    <div className='flex justify-center items-center p-3'>
+                        <p><small>New Here? <Link className='text-sm font-bold text-orange-600' to="/signUp">Create a new account</Link></small></p>
+                    </div>
                 </div>
             </div>
         </div>
