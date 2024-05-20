@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 
 const Navbar = () => {
     const {user, logOut} = useAuth();
 
     const navLinks = <>
-      <li><Link to='/'>Home</Link></li>
-      <li><Link to='/menu'>Our Menu</Link></li>
-      <li><Link to='/order'>Order Food</Link></li>
-       <li><Link to='/secret'>Secret</Link></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/menu'>Our Menu</Link></li>
+        <li><Link to='/order'>Order Food</Link></li>
+        <li><Link to='/secret'>Secret</Link></li>
+        <li>
+            <Link to='/'>
+            <button className="flex justify-center items-center">
+                <HiOutlineShoppingCart className="text-2xl font-medium text-white" />
+                <div className="badge badge-outline">+0</div>
+            </button>
+            </Link>
+        </li>
 
     </>
 
@@ -37,12 +46,15 @@ const Navbar = () => {
             </div>
             <div className="navbar-end gap-3">
                 {
-                    user? <div>
+                    user? <div className="flex justify-center items-center gap-2">
+                        <div>
+                            <img className="w-16 h-16 rounded-full" src={user.photoURL} alt="user" />
+                        </div>
                         <Link onClick={handleLogout} className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600">Logout</Link>
                     </div>
                     :
-                    <div>
-                        <Link className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600" to='/login'>Login</Link>
+                    <div className="">
+                        <Link className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600 mr-2" to='/login'>Login</Link>
                         <Link className="btn btn-sm bg-slate-400 btn-outline border-0 border-b-blue-950 text-orange-600" to='/signUp'>Sign Up</Link>
                     </div>
                 }  

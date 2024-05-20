@@ -1,20 +1,35 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
-    const { createUser } = useAuth();
+    const { createUser, updateUserProfile } = useAuth();
     const {register, reset, handleSubmit} = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        // console.log(data);
+        console.log(data);
         const email = data.email;
         const password = data.password;
+        const name = data.name;
+        const imageURL = data.imageURL;
 
         createUser(email, password)
         .then(result => {
             const loggedInUser = result.user;
-            console.log(loggedInUser);
+            console.log("LoggedIn User: ",loggedInUser);
+            updateUserProfile(name, imageURL)
+            .then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User create successfully!!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/');
+            })
         })
         reset();
     }
@@ -42,12 +57,15 @@ const SignUp = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="url" name="imageURL" placeholder="Enter photo url.." className="input input-bordered" {...register('imageURL')} required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="Enter password.." className="input input-bordered" {...register('password')} required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
                         </div>
                         
                         <div className="form-control mt-6">
