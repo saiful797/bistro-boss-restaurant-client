@@ -13,8 +13,8 @@ const Navbar = () => {
         <li>
             <Link to='/'>
             <button className="flex justify-center items-center">
-                <HiOutlineShoppingCart className="text-2xl font-medium text-white" />
-                <div className="badge badge-outline">+0</div>
+                <HiOutlineShoppingCart className="text-2xl font-medium" />
+                <div className="badge badge-secondary">+0</div>
             </button>
             </Link>
         </li>
