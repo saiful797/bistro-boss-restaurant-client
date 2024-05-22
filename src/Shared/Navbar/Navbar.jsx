@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import useCart from "../../Hooks/useCart";
 
 const Navbar = () => {
     const {user, logOut} = useAuth();
+    const [ cart ] = useCart();
 
     const navLinks = <>
         <li><Link to='/'>Home</Link></li>
@@ -14,7 +16,7 @@ const Navbar = () => {
             <Link to='/'>
             <button className="flex justify-center items-center">
                 <HiOutlineShoppingCart className="text-2xl font-medium" />
-                <div className="badge badge-secondary">+0</div>
+                <div className="badge badge-secondary">+{cart.length}</div>
             </button>
             </Link>
         </li>

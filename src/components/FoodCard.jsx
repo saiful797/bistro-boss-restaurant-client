@@ -3,21 +3,22 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2'
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import useCart from '../Hooks/useCart';
 
 const FoodCard = ({item}) => {
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
+    const [, refetch] = useCart();
 
     const {name, recipe, image, price, _id} = item;
 
 
-    const handleAddToCart = (foodItem) =>{
+    const handleAddToCart = () =>{
         
         if(user && user?.email){
-            console.log('user: ', user.email, "FoodItem: ", foodItem);
-            //TODO: send cart item to the mongodb database
+            //send cart item to the mongodb database
             const cartItem = {
                 menuId: _id,
                 email: user.email,
@@ -37,6 +38,9 @@ const FoodCard = ({item}) => {
                         showConfirmButton: false,
                         timer: 2000
                     });
+
+                    // refetch the cart
+                    refetch();
                 }
             })
         }
@@ -67,7 +71,7 @@ const FoodCard = ({item}) => {
                 <p>{recipe}</p>
 
                 <Link className="flex justify-center items-center">
-                    <button onClick={() => handleAddToCart(item)} className="btn btn-sm btn-outline mt-4 border-0 border-b-2 border-b-orange-600 text-orange-600 bg-slate-300 mb-5">Add To Cart</button>
+                    <button onClick={handleAddToCart} className="btn btn-sm btn-outline mt-4 border-0 border-b-2 border-b-orange-600 text-orange-600 bg-slate-300 mb-5">Add To Cart</button>
                 </Link>
             </div>
         </div>
