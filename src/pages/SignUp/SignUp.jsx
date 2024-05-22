@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from 'sweetalert2';
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useAuth();
@@ -48,6 +49,9 @@ const SignUp = () => {
                 <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
                 <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+                    <div className="my-3 mx-auto">
+                        <SocialLogin />
+                    </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">
