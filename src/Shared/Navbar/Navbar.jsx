@@ -13,7 +13,7 @@ const Navbar = () => {
         <li><Link to='/order'>Order Food</Link></li>
         <li><Link to='/secret'>Secret</Link></li>
         <li>
-            <Link to='/'>
+            <Link to='/dashboard/cart'>
             <button className="flex justify-center items-center">
                 <HiOutlineShoppingCart className="text-2xl font-medium" />
                 <div className="badge badge-secondary">+{cart.length}</div>
