@@ -47,7 +47,7 @@ const Cart = () => {
                     <table className="table">
                         {/* head */}
                         <thead>
-                            <tr className="text-lg font-medium">
+                            <tr className="text-lg font-medium bg-slate-200">
                                 <th> # </th>
                                 <th> Image </th>
                                 <th> Name </th>
