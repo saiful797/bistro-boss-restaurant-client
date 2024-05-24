@@ -23,7 +23,7 @@ const DashBoard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/addItem'> 
+                                <NavLink to='/dashboard/addItems'> 
                                     <FaUtensils />
                                      Add Items
                                 </NavLink>
