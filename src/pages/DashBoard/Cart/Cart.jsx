@@ -41,7 +41,7 @@ const Cart = () => {
             <div className="flex justify-evenly items-center">
                 <h1 className="text-4xl">Items: {cart.length}</h1>
                 <h1 className="text-4xl">Total Price: ${totalPrice}</h1>
-                <Link to="/dashboard/payment" className="btn bg-[#D1A054] hover:bg-black text-white text-lg">Pay</Link>
+                <Link to="/dashboard/payment" disabled = {!cart.length} className="btn bg-[#D1A054] hover:bg-black text-white text-lg">Pay</Link>
             </div>
             <div>
                 <div className="overflow-x-auto mt-10">
